@@ -3,7 +3,26 @@
 # Created by: Adam Talarczyk, Krystian Budulski, Mateusz Wrzoł
 # Created on: 10.04.2021
 
-source('integral/integral.R')
 source('pi/approximation.R')
+source('pi/avarage_absolute_difference.R')
 
-x <- approximation(21370)
+calculate_and_make_plot <- function(min, max, step) {
+  print("Calculating...")
+  steps <- seq(min, max, by = step)
+
+  avarage.diffs <- NULL
+  for (runs in steps)
+  {
+    print(paste('Counting for step', runs))
+    avarage.absolute.difference <- avarage_absolute_difference(runs)
+    avarage.diffs <- append(avarage.diffs, avarage.absolute.difference)
+  }
+
+  make_plot(steps, avarage.diffs)
+}
+
+make_plot <- function(steps, results) {
+  plot(steps, results, xlab = 'Rozmiar próbki', ylab = 'Błąd aproksymacji', col = 'black')
+}
+
+calculate_and_make_plot(10000, 105000, 1000)
