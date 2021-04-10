@@ -1,6 +1,6 @@
-# Title     : TODO
-# Objective : TODO
-# Created by: Adam Talarczyk
+# Title     : Zadanie 2
+# Objective : Zadanie 2
+# Created by: Adam Talarczyk, Krystian Budulski, Mateusz Wrzoł
 # Created on: 10.04.2021
 
 integral <- function() {
