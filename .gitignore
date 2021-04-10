@@ -137,3 +137,9 @@ vignettes/*.pdf
 /*_files/
 
 # End of https://www.toptal.com/developers/gitignore/api/r,intellij+all
+
+# Latex files
+*.log
+*.aux
+*.synctex.gz
+*.toc
