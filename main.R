@@ -18,11 +18,12 @@ calculate_and_make_plot <- function(min, max, step) {
     avarage.diffs <- append(avarage.diffs, avarage.absolute.difference)
   }
 
-  make_plot(steps, avarage.diffs)
+  make_plot(steps, avarage.diffs, min, max)
 }
 
-make_plot <- function(steps, results) {
-  plot(steps, results, xlab = 'Rozmiar próbki', ylab = 'Błąd aproksymacji', col = 'black')
+make_plot <- function(steps, results, min_limit, max_limit) {
+  plot(steps, results, xlab = 'Rozmiar próbki', ylab = 'Błąd aproksymacji', col = 'black',
+       xlim=c(min_limit, max_limit))
 }
 
-calculate_and_make_plot(10000, 105000, 1000)
+calculate_and_make_plot(10000, 105000, 100)

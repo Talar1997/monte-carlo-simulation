@@ -3,7 +3,7 @@
 # Created by: Adam Talarczyk, Krystian Budulski, Mateusz Wrzoł
 # Created on: 10.04.2021
 
-avarage_absolute_difference <- function(runs, sequences = 1000) {
+avarage_absolute_difference <- function(runs, sequences = 100) {
   pi.vector <- NULL
   for (i in seq(0, sequences, by = 1))
   {
