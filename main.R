@@ -9,8 +9,8 @@ source('pi/avarage_absolute_difference.R')
 calculate_and_make_plot <- function(min, max, step) {
   print("Calculating...")
   steps <- seq(min, max, by = step)
-
   avarage.diffs <- NULL
+
   for (runs in steps)
   {
     print(paste('Counting for step', runs))
@@ -26,4 +26,4 @@ make_plot <- function(steps, results, min_limit, max_limit) {
        xlim=c(min_limit, max_limit))
 }
 
-calculate_and_make_plot(10000, 105000, 100)
+calculate_and_make_plot(1, 1000000, 1000)

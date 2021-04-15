@@ -3,7 +3,7 @@
 # Created by: Adam Talarczyk, Krystian Budulski, Mateusz Wrzoł
 # Created on: 10.04.2021
 
-avarage_absolute_difference <- function(runs, sequences = 100) {
+avarage_absolute_difference <- function(runs, sequences = 20) {
   pi.vector <- NULL
   for (i in seq(0, sequences, by = 1))
   {
@@ -14,7 +14,7 @@ avarage_absolute_difference <- function(runs, sequences = 100) {
 
   avarage <- mean(pi.vector, trim = 0, na.rm = FALSE)
 
-  absolute_difference <- abs(avarage - pi)
+  absolute_difference <- abs(3.14159265 - avarage)
 
   print(avarage)
   print(absolute_difference)
