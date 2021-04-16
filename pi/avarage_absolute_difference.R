@@ -1,21 +1,23 @@
 # Title     : Avarage absolute difference
-# Objective : For arg runs, make for loop for sequences number (default 1000)
-# Created by: Adam Talarczyk, Krystian Budulski, Mateusz Wrzoł
+# Objective :
+# Created by: Adam Talarczyk, Mateusz Wrzol
 # Created on: 10.04.2021
 
-avarage_absolute_difference <- function(runs, sequences = 20) {
+avarage_absolute_difference <- function(runs, sequences = 100) {
   pi.vector <- NULL
-  for (i in seq(0, sequences, by = 1))
+  for (i in seq(1, sequences, by = 1))
   {
-    # FIXME: niektóre liczby zwracane ma 4 cyfry (3.1500) a niektóre 6 cyfer (3.134133)
     mc.pi <- approximation(runs)
     pi.vector <- append(pi.vector, mc.pi)
   }
 
-  avarage <- mean(pi.vector, trim = 0, na.rm = FALSE)
+  avarage_pi <- mean(pi.vector, trim = 0, na.rm = FALSE)
+  avarage_difference <- abs(3.14159265 - avarage_pi)
 
-  absolute_difference <- abs(3.14159265 - avarage)
-
-  print(avarage)
-  print(absolute_difference)
+  dataset <- data.frame(
+    step = runs,
+    pi_value = pi.vector,
+    avg_pi = avarage_pi,
+    avg_diff = avarage_difference
+  )
 }

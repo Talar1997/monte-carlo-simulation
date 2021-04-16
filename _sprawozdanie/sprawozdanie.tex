@@ -31,11 +31,11 @@
     captionpos=b,
     keepspaces=true,
     numbers=left,
-    numbersep=5pt,
+    numbersep=3pt,
     showspaces=false,
     showstringspaces=false,
     showtabs=false,
-    tabsize=2,
+    tabsize=1,
     basicstyle=\small
 }
 
@@ -51,13 +51,18 @@
 
         \Huge
         \textbf{WYDZIAŁ NAUK ŚCISŁYCH I TECHNICZNYCH}
-
+        
+        
         \vspace{1.5cm}
+	   Symulacje Komputerowe
         \LARGE
-        Adam Talarczyk, Krystian Budulski, Mateusz Wrzoł
+        
 	\vspace{2cm}
 	
-	Symulacja Monte Carlo
+	Sprawozdanie ``Symulacja Monte Carlo''
+
+	\vspace{1cm}
+	Adam Talarczyk, Mateusz Wrzoł
 	
 	\vspace{5cm}
         \vfill
@@ -70,11 +75,12 @@
 \end{titlepage}
 \newpage
 
-\tableofcontents
-\newpage
+%\tableofcontents
+% \newpage
+
 
 \section{Zadanie 1}
-Należy zmodyfikować kod dla aproksymacji stałej PI, aby sprawdzić jak rozmiar próbki wpływa na błąd aproksymacji. Błąd aproksymacji obliczamy jako wartość bezwględną różnicy, pomiędzy aproksymacją PI i wartością rzeczywistą PI (3.14159265). Należy przygotować wykres [Rysunek \ref{fig:wykres1}].
+Należy zmodyfikować kod dla aproksymacji stałej $\pi$, aby sprawdzić jak rozmiar próbki wpływa na błąd aproksymacji. Błąd aproksymacji obliczamy jako wartość bezwględną różnicy, pomiędzy aproksymacją $\pi$ i wartością rzeczywistą $\pi$ (3.14159265). Należy przygotować wykres [Rysunek \ref{fig:wykres1}].
 
 \begin{figure}[H]
 \centering
@@ -87,10 +93,9 @@ Należy zmodyfikować kod dla aproksymacji stałej PI, aby sprawdzić jak rozmia
 Opis rozwiązania
 
 \subsection{Kod źródłowy}
-Listingi
-
-\subsection{Wnioski}
-Wnioski
+\lstinputlisting[language=R, caption=Plik main.R - wywołanie głównej funkcji, label={main}]{../pi/main.R}
+\lstinputlisting[language=R, caption=Plik avarage\_absolute\_difference.R - odpowiedzialny za wyliczanie błędu aproksymacji PI, label={avg-abs-dif}]{../pi/avarage_absolute_difference.R}
+\lstinputlisting[language=R, caption=Plik approximation.R - odpowiedzialny za obliczanie przybliżenia, label={approx}]{../pi/approximation.R}
 
 \section{Zadanie 2}
 Zaprogramować symulację Monte Carlo (np. w języku R), która pozwoli obliczyć pole powierzchni szarego obszaru, przedstawionego na poniższym rysunku [Rysunek \ref{fig:wykres2}]. Obliczyć błąd uzyskanego wyniku.
@@ -107,8 +112,5 @@ Opis rozwiązania
 
 \subsection{Kod źródłowy}
 Listingi
-
-\subsection{Wnioski}
-Wnioski
 
 \end{document}
