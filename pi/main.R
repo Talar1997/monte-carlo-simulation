@@ -4,17 +4,17 @@
 # Created on: 16.04.2021
 
 library("xlsx")
-source('pi/avarage_absolute_difference.R')
+source('pi/avarage_difference.R')
 
-calculate_and_make_plot <- function(steps, sequences) {
+calculate <- function(steps, sequences) {
   diff.vector <- NULL
   dataset <- data.frame()
 
   for (runs in steps)
   {
-    difference <- avarage_absolute_difference(runs, sequences)
-    dataset <- rbind(dataset, difference)
-    diff.vector <- append(diff.vector, difference[1, 'avg_diff'])
+    diff <- avarage_difference(runs, sequences)
+    dataset <- rbind(dataset, diff)
+    diff.vector <- append(diff.vector, diff[1, 'diff'])
   }
 
   export_dataset(dataset)
@@ -29,6 +29,5 @@ draw_plot <- function(steps, results) {
   plot(steps, results, xlab = 'Rozmiar probki', ylab = 'Blad aproksymacji', col = 'black')
 }
 
-# calculate_and_make_plot(seq(0, 1000000, by = 10000))
-sequence <- c(1,500,1000,10000,50000,100000,500000,1000000)
-calculate_and_make_plot(sequence, 10)
+sequence <- c(1,10,100,1000,10000,100000,1000000)
+calculate(sequence, 10)

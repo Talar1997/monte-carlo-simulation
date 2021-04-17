@@ -90,13 +90,60 @@ Należy zmodyfikować kod dla aproksymacji stałej $\pi$, aby sprawdzić jak roz
 \end{figure}
 
 \subsection{Rozwiązanie}
-Opis rozwiązania
+Do uzyskania odpowiednich wyników konieczne było wyliczenie aproksymacji $\pi$ dla wielu próbek. W zadaniu wykorzystano próbki z zakresu od 1 do 1000000. Dodatkowo, konieczne było kilkukrotne powtórzenie wykonywanej aproksymacji w celu uśrednienia otrzymanego przybliżenia $\pi$. W opisywanym przykładzie zastosowano 10 powtórzeń. Błąd aproksymacji został wyliczony jako różnica bezwzglęna pomiędzy zdefiniowaną stałą \verb|3,14159265| oraz uzyskanym uśrednionym przybliżeniem. Wyniki zaprezentowane są w tablicy \ref{tab:res}.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{ |c|c|c| } 
+ \hline
+ Próbka & Średnie przybliżenie $\pi$ & Błąd aproksymacji \\
+ \hline
+ 1	& 3,6 &	0,45840735 \\
+ 10	& 3,04 &	0,10159265 \\
+ 100	& 	3,064 &	0,07759265 \\
+ 1000	& 3,124 &	0,01759265 \\
+ 10000	& 3,13392 &	0,00767265 \\
+ 100000	& 	3,140084 &	0,00150865 \\
+ 1000000	& 3,1409996 &	0,00059305 \\
+ \hline
+\end{tabular}
+\caption{Tablica z wynikami uzyskanymi w symulacji}
+\label{tab:res}
+\end{table}
+
+Na podstawie powyższych danych wygenerowany został wykres za pomocą funkcji \verb|plot()| (Rysunek \ref{fig:pi10}). 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\columnwidth]{img/pi10.PNG}
+\caption{Wygenerowany wykres przedstawiający wynik dla aproksymacji $\pi$}
+\label{fig:pi10}
+\end{figure}
+
+Przedstawiony na rysunku \ref{fig:pi10} wykres jest mało czytelny, dlatego wyeksportowano dane do pliku o rozszerzeniu \verb|xlsx| i na ich podstawie utworzono kolejne wykresy: Błąd aproksymacji względem rozmiaru próbki (Rysunek \ref{fig:pie1}) oraz przybliżenie PI względem rozmiaru próbki z zaznaczoną wartością 3,14159265 (Rysunek \ref{fig:pie2}).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\columnwidth]{img/pi-excel.PNG}
+\caption{Wykres przedstawiający błąd aproksymacji względem rozmiaru próbki}
+\label{fig:pie1}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\columnwidth]{img/pi-excel2.PNG}
+\caption{Wykres przedstawiający przybliżenie PI względem rozmiaru próbki, w porównaniu do wartości 3,14159265}
+\label{fig:pie2}
+\end{figure}
+
+Na podstawie przedstawionej symulacji można stwierdzić, że wielkość błędu aproksymacji zależy od wielkości próbki. Im większa próbka, tym mniejszy jest błąd aproksymacji a przybliżenie liczby $\pi$ jest bardziej dokładne.
 
 \subsection{Kod źródłowy}
 \lstinputlisting[language=R, caption=Plik main.R - wywołanie głównej funkcji, label={main}]{../pi/main.R}
-\lstinputlisting[language=R, caption=Plik avarage\_absolute\_difference.R - odpowiedzialny za wyliczanie błędu aproksymacji PI, label={avg-abs-dif}]{../pi/avarage_absolute_difference.R}
+\lstinputlisting[language=R, caption=Plik avarage\_difference.R - odpowiedzialny za wyliczanie błędu aproksymacji PI, label={avg-abs-dif}]{../pi/avarage_difference.R}
 \lstinputlisting[language=R, caption=Plik approximation.R - odpowiedzialny za obliczanie przybliżenia, label={approx}]{../pi/approximation.R}
 
+\newpage
 \section{Zadanie 2}
 Zaprogramować symulację Monte Carlo (np. w języku R), która pozwoli obliczyć pole powierzchni szarego obszaru, przedstawionego na poniższym rysunku [Rysunek \ref{fig:wykres2}]. Obliczyć błąd uzyskanego wyniku.
 
@@ -108,7 +155,50 @@ Zaprogramować symulację Monte Carlo (np. w języku R), która pozwoli obliczy�
 \end{figure}
 
 \subsection{Rozwiązanie}
-Opis rozwiązania
+Przedział generowania punktów dla współrzędnej x
+
+Przedział generowania punktów dla współrzędnej y
+
+Punkty w trójkącie pierwszym (prawa strona)
+
+Punkty w kwadracie pierwszym (środek)
+
+Punkty w trójkącie drugim (środek)
+
+Punkty w trójkącie trzecim (lewa strona)
+
+Połączenie wszystkich figur w wielokąt z treści zadania
+
+Iloczyn sumy punków w figurze i liczby wygenerowanych punktów, został pomnożony przez pole badanego obszaru
+
+Dokładne pole figury (suma poszczególnych elementów wielokąta)
+
+Błąd uzyskanego wyniku (wartość bezwzględna z róznicy uzyskanego wyniku i dokładnego pola figury)
+
+Tworzenie wykresu wraz z uzyskanem wynikiem i błędem uzyskanego wyniku
+
+\begin{figure}[H]%
+    \centering
+    \subfloat[\centering TODO 100k]{{\includegraphics[width=5cm]{img/figure100k.PNG} }}%
+    \qquad
+    \subfloat[\centering TODO 1m]{{\includegraphics[width=5cm]{img/figure1m.PNG} }}%
+    \caption{TODO opis wykresów}%
+    \label{fig:figs}%
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\columnwidth]{img/figure100k.PNG}
+\caption{Wykres przedstawiający wynik symulacji dla wartości runs=100000}
+\label{fig:figure100k}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\columnwidth]{img/figure1m.PNG}
+\caption{Wykres przedstawiający wynik symulacji dla wartości runs=1000000}
+\label{fig:figure1m}
+\end{figure}
 
 \subsection{Kod źródłowy}
 \lstinputlisting[language=R, caption=Plik figure.R - odpowiedzialny za obliczenie pola i wygenerowanie wykresu, label={approx2}]{../figure/figure.R}
