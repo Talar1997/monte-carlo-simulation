@@ -3,6 +3,8 @@
 # Created by: Adam Talarczyk, Mateusz Wrzol
 # Created on: 10.04.2021
 
+source('pi/approximation.R')
+
 avarage_absolute_difference <- function(runs, sequences = 100) {
   pi.vector <- NULL
   for (i in seq(1, sequences, by = 1))
