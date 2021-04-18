@@ -116,7 +116,7 @@ Na podstawie powyższych danych wygenerowany został wykres za pomocą funkcji \
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\columnwidth]{img/pi10.PNG}
-\caption{Wygenerowany wykres przedstawiający wynik dla aproksymacji $\pi$}
+\caption{Wygenerowany wykres przedstawiający błąd aproksymacji względem rozmiaru próbki}
 \label{fig:pi10}
 \end{figure}
 
@@ -141,7 +141,7 @@ Na podstawie przedstawionej symulacji można stwierdzić, że wielkość błędu
 \subsection{Kod źródłowy}
 \lstinputlisting[language=R, caption=Plik main.R - wywołanie głównej funkcji, label={main}]{../pi/main.R}
 \lstinputlisting[language=R, caption=Plik avarage\_difference.R - odpowiedzialny za wyliczanie błędu aproksymacji PI, label={avg-abs-dif}]{../pi/avarage_difference.R}
-\lstinputlisting[language=R, caption=Plik approximation.R - odpowiedzialny za obliczanie przybliżenia, label={approx}]{../pi/approximation.R}
+\lstinputlisting[language=R, caption=Plik approximation.R - odpowiedzialny za obliczanie przybliżenia liczby $\pi$, label={approx}]{../pi/approximation.R}
 
 \newpage
 \section{Zadanie 2}
@@ -155,50 +155,42 @@ Zaprogramować symulację Monte Carlo (np. w języku R), która pozwoli obliczy�
 \end{figure}
 
 \subsection{Rozwiązanie}
-Przedział generowania punktów dla współrzędnej x
-
-Przedział generowania punktów dla współrzędnej y
-
-Punkty w trójkącie pierwszym (prawa strona)
-
-Punkty w kwadracie pierwszym (środek)
-
-Punkty w trójkącie drugim (środek)
-
-Punkty w trójkącie trzecim (lewa strona)
-
-Połączenie wszystkich figur w wielokąt z treści zadania
-
-Iloczyn sumy punków w figurze i liczby wygenerowanych punktów, został pomnożony przez pole badanego obszaru
-
-Dokładne pole figury (suma poszczególnych elementów wielokąta)
-
-Błąd uzyskanego wyniku (wartość bezwzględna z róznicy uzyskanego wyniku i dokładnego pola figury)
-
-Tworzenie wykresu wraz z uzyskanem wynikiem i błędem uzyskanego wyniku
-
-\begin{figure}[H]%
-    \centering
-    \subfloat[\centering TODO 100k]{{\includegraphics[width=5cm]{img/figure100k.PNG} }}%
-    \qquad
-    \subfloat[\centering TODO 1m]{{\includegraphics[width=5cm]{img/figure1m.PNG} }}%
-    \caption{TODO opis wykresów}%
-    \label{fig:figs}%
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=1\columnwidth]{img/figure100k.PNG}
-\caption{Wykres przedstawiający wynik symulacji dla wartości runs=100000}
-\label{fig:figure100k}
-\end{figure}
+W celu uzyskania odpowiedniego wyniku, w pierwszej kolejności generowane są punkty dla współrzednych \verb|x| (od 0 do 8) i \verb|y| (od 0 do 2). Następnie sprawdzane jest, czy punkty znajdują się w przestrzeni odpowiedniej figury (z podziałem na mniejsze figury, takie jak prawy trójkąt, lewy trójkąt, środkowy trójkąt oraz środkowy prostokąt). Kolejnym krokiem jest połączenie wyników dla poszczególnych figur w jeden wielokąt z treści zadania. Dokładne pole figury zostało wyliczone jako suma poszczególnych elementów wielokąta, zastosowano działanie \verb|(2*2/2)+(1*4/2)+(1*2/2)+(1*4)|, którego wynik wynosi 9. Wynik symulacji to iloraz sumy punków w figurze i liczby wygenerowanych punktów, pomnożony przez pole badanego obszaru (\verb|2*8=16|). Błąd uzyskanego wyniku został wyliczony jako wartość bezwzględna z różnicy uzyskanego wyniku i dokładnego pola figury. Na sam koniec wygenerowany został wykres przy użyciu funkcji \verb|plot()| (Resunek \ref{fig:fig1m}).
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\columnwidth]{img/figure1m.PNG}
-\caption{Wykres przedstawiający wynik symulacji dla wartości runs=1000000}
-\label{fig:figure1m}
+\caption{Figura utworzona przy użyciu funkcji plot() dla próbki równej 1000000}
+\label{fig:fig1m}
 \end{figure}
+
+
+Wyniki dla poszczególnych próbek zamieszczone są w tablicy \ref{tab:figwynik}. Dodatkowo, wygenerowane wykresy przedstawione są na rysunku \ref{fig:figs} w formie porównania względem wielkości próbki.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{ |c|c|c| } 
+ \hline
+ Próbka & Pole figury & Błąd \\
+ \hline
+ 100000	& 9.0352 &	0.0351999999999997 \\
+ 1000000	& 9.012624 & 0.0126240000000006 \\
+ \hline
+\end{tabular}
+\caption{Tablica z wynikami uzyskanymi w symulacji}
+\label{tab:figwynik}
+\end{table}
+
+\begin{figure}[H]%
+    \centering
+    \subfloat[\centering Wynik symulacji dla próbki 100000]{{\includegraphics[width=5cm]{img/figure100k.PNG} }}%
+    \qquad
+    \subfloat[\centering Wynik symulacji dla próbki 1000000]{{\includegraphics[width=5cm]{img/figure1m.PNG} }}%
+    \caption{Porównanie wizualizacji figur pod względem wielkości próbki}%
+    \label{fig:figs}%
+\end{figure}
+
+Na podstawie przedstawionych wyników zauważyć można, że dokładność uzyskanego pola figury rośnie wraz ze zwiększeniem probki.
 
 \subsection{Kod źródłowy}
 \lstinputlisting[language=R, caption=Plik figure.R - odpowiedzialny za obliczenie pola i wygenerowanie wykresu, label={approx2}]{../figure/figure.R}
